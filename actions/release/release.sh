@@ -27,7 +27,10 @@ git config --global user.email "$GIT_RELEASE_BOT_EMAIL";
 git config --global user.name "$GIT_RELEASE_BOT_NAME";
 
 # Setup GPG
+echo "is gpg enabled?"
+echo $GPG_ENABLED
 if [[ $GPG_ENABLED ]]; then
+     echo "guess it was enabled"
      git config --global commit.gpgsign true
      git config --global user.signingkey $GPG_KEY_ID
      echo "GPG_KEY_ID = $GPG_KEY_ID"
