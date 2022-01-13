@@ -46,5 +46,6 @@ if [[ -n "$MAVEN_LOCAL_REPO_PATH" ]]; then
 fi
 
 # D0 the release
-mvn $MAVEN_REPO_LOCAL -Dusername=$GITHUB_ACCESS_TOKEN release:prepare -B -Darguments="$MAVEN_ARGS"
-mvn $MAVEN_REPO_LOCAL release:perform -B -Darguments="$MAVEN_ARGS"
+mvn clean package
+# mvn $MAVEN_REPO_LOCAL -Dusername=$GITHUB_ACCESS_TOKEN release:prepare -B -Darguments="$MAVEN_ARGS"
+# mvn $MAVEN_REPO_LOCAL release:perform -B -Darguments="$MAVEN_ARGS"
