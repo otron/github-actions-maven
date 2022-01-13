@@ -35,8 +35,10 @@ if [[ $GPG_ENABLED ]]; then
      git config --global user.signingkey $GPG_KEY_ID
      echo "GPG_KEY_ID = $GPG_KEY_ID"
 
-     echo  "$GPG_KEY" | base64 -d > private.key
-     gpg --import ./private.key
+     cat <(echo -e "$GPG_KEY") | gpg --batch --import
+     gpg --list-secret-keys --keyid-format LONG
+     # echo  "$GPG_KEY" | base64 -d > private.key
+     # gpg --import ./private.key
 fi
 echo "JAVA_HOME = $JAVA_HOME"
 JAVA_HOME="/usr/local/openjdk-11/"
