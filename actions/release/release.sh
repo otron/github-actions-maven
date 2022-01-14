@@ -5,18 +5,18 @@ set -e
 readonly local last_release_commit_hash=$(git log --author="$GIT_RELEASE_BOT_NAME" --pretty=format:"%H" -1)
 echo "Last $GIT_RELEASE_BOT_NAME commit: ${last_release_commit_hash}"
 echo "Current commit: ${GITHUB_SHA}"
-if [[ "${last_release_commit_hash}" = "${GITHUB_SHA}" ]]; then
+# if [[ "${last_release_commit_hash}" = "${GITHUB_SHA}" ]]; then
      # echo "Skipping for $GIT_RELEASE_BOT_NAME commit"
      # exit 0
-fi
+# fi
 
 # Filter the branch to execute the release on
 readonly local branch=${GITHUB_REF##*/}
 echo "Current branch: ${branch}"
-if [[ -n "$RELEASE_BRANCH_NAME" && ! "${branch}" = "$RELEASE_BRANCH_NAME" ]]; then
+# if [[ -n "$RELEASE_BRANCH_NAME" && ! "${branch}" = "$RELEASE_BRANCH_NAME" ]]; then
      # echo "Skipping for ${branch} branch"
      # exit 0
-fi
+# fi
 
 # Making sure we are on top of the branch
 git checkout ${GITHUB_REF##*/}
